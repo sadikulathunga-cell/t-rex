@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>T-REX | Photography Page</title>
+    <meta
+      name="description"
+      content="A modern photography website for friends who capture unforgettable moments."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="login-screen" id="login-screen">
+      <div class="login-card">
+        <div class="section-heading">
+          <p class="eyebrow">Member access</p>
+          <h2>Sign in or register</h2>
+        </div>
+        <div class="auth-switch">
+          <button type="button" id="auth-login" class="auth-toggle active">Login</button>
+          <button type="button" id="auth-register" class="auth-toggle">Sign up</button>
+        </div>
+        <p class="auth-copy" id="login-copy">Existing numbers log in instantly. New numbers register with OTP verification. OTP is shown here for demo purposes.</p>
+        <form id="login-form" class="auth-form">
+          <div class="field-group auth-name-field">
+            <label for="login-name">Name</label>
+            <input id="login-name" name="name" type="text" placeholder="Your full name" />
+          </div>
+
+          <div class="field-group">
+            <label for="login-phone">Phone number</label>
+            <input id="login-phone" name="phone" type="tel" placeholder="+1 555 123 4567" required />
+          </div>
+
+          <div class="field-group">
+            <label for="login-password">Password</label>
+            <div class="password-control">
+              <input id="login-password" name="password" type="password" placeholder="Create or enter password" required />
+              <button type="button" id="toggle-password" class="password-toggle">Show</button>
+            </div>
+          </div>
+
+          <div class="remember-control">
+            <label>
+              <input id="remember-password" type="checkbox" />
+              Remember password for this device
+            </label>
+          </div>
+
+          <button id="login-submit" type="submit" class="btn primary">Continue to login</button>
+        </form>
+
+        <div id="otp-panel" class="otp-panel" hidden>
+          <p id="otp-message" class="otp-message">OTP sent to your number.</p>
+          <label for="otp-code">OTP code</label>
+          <input id="otp-code" name="otp" type="text" inputmode="numeric" maxlength="6" placeholder="Enter OTP" />
+          <div class="otp-actions">
+            <button type="button" id="verify-otp" class="btn primary">Verify OTP</button>
+            <button type="button" id="resend-otp" class="btn secondary">Resend OTP</button>
+          </div>
+        </div>
+
+        <p id="login-status" class="auth-status">You must sign in before using the site.</p>
+      </div>
+    </div>
+
+    <div id="toast" class="toast" hidden></div>
+
+    <header class="page-header">
+      <nav class="nav">
+        <a class="brand" href="#home">T-REX editor (sadisha)
+
+        </a>
+        <div class="nav-actions">
+          <div class="nav-links">
+            <button type="button" class="tab-link active" data-screen="home">Home</button>
+            <button type="button" class="tab-link hidden" data-screen="details">Details</button>
+            <button type="button" class="tab-link hidden" data-screen="admin">Profile</button>
+            <button type="button" class="tab-link" data-screen="photographers">Photographers</button>
+          </div>
+          <div class="nav-user">
+            <span id="user-display" class="user-display"></span>
+            <button id="login-btn" class="btn secondary">Login</button>
+            <button id="logout-btn" class="btn secondary" hidden>Logout</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="app-shell">
+      <section class="interface-screen active" id="screen-home">
+        <section class="hero" id="home">
+          <div class="hero-content">
+            <p class="eyebrow">Storytelling through light</p>
+            <h1>Beautiful photography for weddings, portraits, and travel.</h1>
+            <p>
+              We create timeless images that feel honest, cinematic, and personal.
+            </p>
+            <div class="hero-actions">
+              <button type="button" class="btn primary screen-link" data-screen="photographers">View Gallery</button>
+              <button type="button" class="btn secondary screen-link" data-screen="details">Book a Session</button>
+            </div>
+          </div>
+        </section>
+
+        <div class="topic-grid">
+          <article class="topic-card">
+            <p class="eyebrow">01</p>
+            <h3>Add details to website</h3>
+            <p>Show your services, pricing, portfolio highlights, and contact details in one polished place.</p>
+            <button type="button" id="start-update-btn" class="text-link screen-link" data-screen="details">Start updating</button>
+          </article>
+          <article class="topic-card">
+            <p class="eyebrow">02</p>
+            <h3>Find a photographer</h3>
+            <p>Browse trusted photographers, compare styles, and connect with the right person for your story.</p>
+            <button type="button" class="text-link screen-link" data-screen="photographers">Explore now</button>
+          </article>
+          <article class="topic-card">
+            <p class="eyebrow">03</p>
+            <h3>Photographer profile</h3>
+            <p>Open the profile view to share updates, photos, and video history.</p>
+            <button type="button" class="text-link screen-link" data-screen="admin">Open profile</button>
+          </article>
+        </div>
+
+        <section class="section alt" id="about">
+          <div class="section-heading">
+            <p class="eyebrow">About us</p>
+            <h2>Crafted with care and curiosity</h2>
+          </div>
+          <div class="about-grid">
+            <p>
+              Lens & Light is a small collective of photographers who love capturing
+              honest emotion, natural movement, and the beauty of everyday stories.
+            </p>
+            <p>
+              From intimate portraits to destination shoots, every frame is shaped
+              around warmth, atmosphere, and a sense of connection.
+            </p>
+          </div>
+        </section>
+
+        <section class="section" id="contact">
+          <div class="contact-card">
+            <p class="eyebrow">Let’s connect</p>
+            <h2>Let’s create something unforgettable.</h2>
+            <p>
+              Available for portraits, weddings, travel, and special occasions.
+            </p>
+            <a class="btn primary" href="mailto:sadikulathunga@gmail.com">sadikulathunga@gmail.com</a>
+          </div>
+        </section>
+      </section>
+
+      <section class="interface-screen" id="screen-details">
+        <section class="section" id="details-form">
+          <div class="auth-card">
+            <div class="section-heading">
+              <p class="eyebrow">Photographer details</p>
+              <h2>Share your details</h2>
+            </div>
+            <form class="auth-form" id="details-form-element" novalidate>
+              <label for="name">Your name</label>
+              <input id="name" name="name" type="text" placeholder="Enter your full name" />
+
+              <label for="location">Village / Town</label>
+              <input id="location" name="location" type="text" placeholder="Your village or town" />
+
+              <label for="device">Device</label>
+              <input id="device" name="device" type="text" placeholder="Camera / phone model" />
+
+              <label for="packages">Packages</label>
+              <input id="packages" name="packages" type="text" placeholder="Basic / Premium / Wedding" />
+
+              <label for="photos">Profile photo</label>
+              <input id="photos" name="photos" type="file" accept="image/*" />
+              <p class="helper-text">Choose one image to use as your profile picture.</p>
+
+              <label for="details-contact">Contact</label>
+              <input id="details-contact" name="contact" type="text" placeholder="Phone number" />
+
+              <button type="submit" class="btn primary">Submit details</button>
+              <p id="details-status" class="auth-status">Fill in the form to add your details.</p>
+            </form>
+          </div>
+        </section>
+      </section>
+
+      <section class="interface-screen" id="screen-submitter">
+        <section class="section">
+          <div class="auth-card">
+            <div class="section-heading">
+              <p class="eyebrow">Submission complete</p>
+              <h2>Thank you for sharing your details</h2>
+            </div>
+            <p id="submitter-copy" class="section-copy">Your details have been recorded and added to the directory.</p>
+            <div class="submitter-summary">
+              <p><strong>Name:</strong> <span id="submitter-name">—</span></p>
+              <p><strong>Location:</strong> <span id="submitter-location">—</span></p>
+              <p><strong>Device:</strong> <span id="submitter-device">—</span></p>
+              <p><strong>Packages:</strong> <span id="submitter-packages">—</span></p>
+              <p><strong>Contact:</strong> <span id="submitter-contact">—</span></p>
+            </div>
+            <div class="hero-actions">
+              <button type="button" id="view-photographers-btn" class="btn primary">View photographers</button>
+              <button type="button" id="update-details-btn" class="btn secondary">Edit details</button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="interface-screen" id="screen-view-profile">
+        <section class="section">
+          <div class="auth-card profile-card">
+            <div class="section-heading">
+              <p class="eyebrow">Photographer profile</p>
+              <h2 id="view-profile-title">Photographer profile</h2>
+            </div>
+            <div id="view-profile-summary" class="profile-summary"></div>
+            <div class="profile-media-section">
+              <h3>Media history</h3>
+              <div id="view-profile-media-history" class="profile-media-history"></div>
+            </div>
+            <div id="view-profile-feed" class="admin-feed"></div>
+            <div class="hero-actions">
+              <button type="button" id="back-to-photographers" class="btn secondary">Back to photographers</button>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="interface-screen" id="screen-admin">
+        <section class="section">
+          <div class="auth-card profile-card">
+            <div class="section-heading">
+              <p class="eyebrow">Photographer profile</p>
+              <h2 id="profile-title">Your profile</h2>
+            </div>
+            <div id="profile-summary" class="profile-summary"></div>
+            <form id="admin-post-form" class="auth-form" novalidate>
+              <label for="post-text">Share an update</label>
+              <textarea id="post-text" name="postText" rows="4" placeholder="What’s on your mind?"></textarea>
+
+              <label for="post-media">Upload photos or videos</label>
+              <input id="post-media" name="postMedia" type="file" accept="image/*,video/*" multiple />
+              <p class="helper-text">You can add several files in one post.</p>
+
+              <div class="admin-actions">
+                <button type="submit" class="btn primary">Post update</button>
+                <button type="button" id="clear-media" class="btn secondary">Clear media</button>
+              </div>
+            </form>
+            <div class="profile-media-section">
+              <h3>Media history</h3>
+              <div id="profile-media-history" class="profile-media-history"></div>
+            </div>
+            <div id="admin-feed" class="admin-feed"></div>
+          </div>
+        </section>
+      </section>
+
+      <section class="interface-screen" id="screen-photographers">
+        <section class="section" id="photographer-list">
+          <div class="auth-card">
+            <div class="section-heading">
+              <p class="eyebrow">Find a photographer</p>
+              <h2>Choose a photographer</h2>
+            </div>
+            <div class="search-control">
+              <input id="photographer-search" type="search" placeholder="Search by name" aria-label="Search photographers by name" />
+            </div>
+            <div class="member-panel">
+              <div class="section-heading compact">
+                <p class="eyebrow">Registered accounts</p>
+                <h3>Find members who already signed up</h3>
+              </div>
+              <div id="registered-members-list" class="member-list"></div>
+            </div>
+            <div class="photographer-list" id="photographer-list-container"></div>
+            <div class="photographer-detail" id="photographer-detail" hidden></div>
+            <input id="photographer-avatar-input" type="file" accept="image/*" hidden />
+          </div>
+        </section>
+
+        <section class="section" id="gallery">
+          <div class="section-heading">
+            <p class="eyebrow">Featured work</p>
+            <h2>Moments worth keeping</h2>
+          </div>
+
+          <div class="gallery-grid">
+            <article class="card gallery-card" data-photographer-index="0">
+              <img
+                src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80"
+                alt="A portrait in warm evening light"
+              />
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-badge">Featured work</span>
+                <h3 class="gallery-card-title">Asha Menon</h3>
+                <p class="gallery-card-copy">Cinematic portraits and wedding storytelling.</p>
+                <span class="gallery-card-link">View photographer</span>
+              </div>
+            </article>
+            <article class="card gallery-card" data-photographer-index="1">
+              <img
+                src="https://images.unsplash.com/photo-1518623489648-a173ef7824f3?auto=format&fit=crop&w=900&q=80"
+                alt="A happy couple during a wedding ceremony"
+              />
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-badge">Featured work</span>
+                <h3 class="gallery-card-title">Ravi Sharma</h3>
+                <p class="gallery-card-copy">Bold travel photography with vibrant colors and motion.</p>
+                <span class="gallery-card-link">View photographer</span>
+              </div>
+            </article>
+            <article class="card gallery-card" data-photographer-index="2">
+              <img
+                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80"
+                alt="A scenic travel landscape with soft light"
+              />
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-badge">Featured work</span>
+                <h3 class="gallery-card-title">Nadia Joseph</h3>
+                <p class="gallery-card-copy">Minimal and modern lifestyle content with polished storytelling.</p>
+                <span class="gallery-card-link">View photographer</span>
+              </div>
+            </article>
+            <article class="card gallery-card" data-photographer-index="0">
+              <img
+                src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=900&q=80"
+                alt="A creative portrait with a dramatic backdrop"
+              />
+              <div class="gallery-card-overlay">
+                <span class="gallery-card-badge">Featured work</span>
+                <h3 class="gallery-card-title">Asha Menon</h3>
+                <p class="gallery-card-copy">Natural light, timeless portraits, and beautiful details.</p>
+                <span class="gallery-card-link">View photographer</span>
+              </div>
+            </article>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> T-REX editor (sadisha)
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
